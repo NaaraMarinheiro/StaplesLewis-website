@@ -5,8 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
         integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/lightbox.min.css">
     <link rel="stylesheet" href="css/utlities.css">
     <link rel="stylesheet" href="css/style.css">
     <title>Bem-vindo ao StaplesLewis</title>
@@ -14,7 +16,7 @@
 
 <body id="home">
     <header class="hero">
-        <div class="navbar" id="navbar">
+        <div class="navbar top" id="navbar">
             <h1 class="logo">
                 <span class="text-primary"><i class="fas fa-book-open"></i> Staples</span>Lewis
             </h1>
@@ -23,7 +25,7 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">Sobre</a></li>
                     <li><a href="#cases">Casos</a></li>
-                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="blog.html">Blog</a></li>
                     <li><a href="#contact">Contato</a></li>
                 </ul>
             </nav>
@@ -95,20 +97,44 @@
             </header>
             <div class="row">
                 <div class="column">
-                    <img src="img/cases/cases1.jpg" alt="">
-                    <img src="img/cases/cases2.jpg" alt="">
+                    <a href="img/cases/cases1.jpg" data-lightbox="cases" data-title="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla enim aspernatur cum eaque facilis
+                        quos distinctio rem quo soluta repellendus.">
+                        <img src="img/cases/cases1.jpg" alt="">
+                    </a>
+                    <a href="img/cases/cases2.jpg" data-lightbox="cases" data-title="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla enim aspernatur cum eaque facilis
+                    quos distinctio rem quo soluta repellendus.">
+                        <img src="img/cases/cases2.jpg" alt="">
+                    </a>
                 </div>
                 <div class="column">
-                    <img src="img/cases/cases3.jpg" alt="">
-                    <img src="img/cases/cases4.jpg" alt="">
+                    <a href="img/cases/cases3.jpg" data-lightbox="cases" data-title="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla enim aspernatur cum eaque facilis
+                        quos distinctio rem quo soluta repellendus.">
+                        <img src="img/cases/cases3.jpg" alt="">
+                    </a>
+                    <a href="img/cases/cases4.jpg" data-lightbox="cases" data-title="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla enim aspernatur cum eaque facilis
+                        quos distinctio rem quo soluta repellendus.">
+                        <img src="img/cases/cases4.jpg" alt="">
+                    </a>
                 </div>
                 <div class="column">
-                    <img src="img/cases/cases5.jpg" alt="">
-                    <img src="img/cases/cases6.jpg" alt="">
+                    <a href="img/cases/cases5.jpg" data-lightbox="cases" data-title="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla enim aspernatur cum eaque facilis
+                        quos distinctio rem quo soluta repellendus.">
+                        <img src="img/cases/cases5.jpg" alt="">
+                    </a>
+                    <a href="img/cases/cases6.jpg" data-lightbox="cases" data-title="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla enim aspernatur cum eaque facilis
+                        quos distinctio rem quo soluta repellendus.">
+                        <img src="img/cases/cases6.jpg" alt="">
+                    </a>
                 </div>
                 <div class="column">
-                    <img src="img/cases/cases7.jpg" alt="">
-                    <img src="img/cases/cases8.jpg" alt="">
+                    <a href="img/cases/cases7.jpg" data-lightbox="cases" data-title="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla enim aspernatur cum eaque facilis
+                        quos distinctio rem quo soluta repellendus.">
+                        <img src="img/cases/cases7.jpg" alt="">
+                    </a>
+                    <a href="img/cases/cases8.jpg" data-lightbox="cases" data-title="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla enim aspernatur cum eaque facilis
+                        quos distinctio rem quo soluta repellendus.">
+                        <img src="img/cases/cases8.jpg" alt="">
+                    </a>
                 </div>
             </div>
         </section>
@@ -202,6 +228,45 @@
         </div>
         <p> Copyright &copy; 2022 - StaplesLewis</p>
     </footer>
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"
+        integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+    <script src="js/lightbox.min.js"></script>
+    <script>
+        const navbar = document.getElementById('navbar');
+        let scrolled = false;
+
+        window.onscroll = function () {
+            if (window.pageYOffset > 100) {
+                navbar.classList.remove('top');
+                if (!scrolled) {
+                    navbar.style.transform = 'translateY(-70px)';
+                }
+                setTimeout(function () {
+                    navbar.style.transform = 'translateY(0)';
+                    scrolled = true;
+                }, 200);
+            } else {
+                navbar.classList.add('top');
+                scrolled = false;
+            }
+        };
+
+        // Smooth Scrolling
+        $('#navbar a, .btn').on('click', function (e) {
+            if (this.hash !== '') {
+                e.preventDefault();
+
+                const hash = this.hash;
+
+                $('html, body').animate(
+                    {
+                        scrollTop: $(hash).offset().top - 100,
+                    },
+                    800
+                );
+            }
+        });
+    </script>
 </body>
 
 </html>
